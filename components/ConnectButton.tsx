@@ -1,16 +1,24 @@
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import type { NextPage } from "next";
 import styles from "../styles/Home.module.css";
-
-import BuyToken from "../utils/BuyToken";
+import StakeModal from "./StakeModal";
+import Modal from 'react-modal';
+import { useState } from "react";
+// import BuyToken from "../utils/BuyToken";
 
 const ConnectBtn = (props: any) => {
-  
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleCloseModal = () =>{
+    setIsModalOpen(false);
+  }  
 
   const handleBuyToken = () => {
-    console.log(typeof props.coinAmount);
-    console.log(typeof props.tokenAmount);
-    BuyToken(props);
+    // console.log(typeof props.coinAmount);
+    // console.log(typeof props.tokenAmount);
+    // BuyToken(props);
+    setIsModalOpen(true);
   }
 
   return (
@@ -53,7 +61,7 @@ const ConnectBtn = (props: any) => {
                       type="button"
                       className={styles.connect_button}
                     >
-                      Connect Wallet to Buy
+                      Connect Wallet to Stake MMT Token
                     </button>
                   );
                 }
@@ -134,12 +142,13 @@ const ConnectBtn = (props: any) => {
                           type="button"
                           className={styles.buy_button}
                         >
-                          Buy Token
+                          Stake MMT Token
                       </button>
                     </div>
                   </div>
                 );
               })()}
+              <StakeModal isModalOpen = {isModalOpen} closeModal = {handleCloseModal} />
             </div>
           );
         }}
