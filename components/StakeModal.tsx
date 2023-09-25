@@ -65,32 +65,37 @@ const StakeModal = (props: any) => {
 
   return(
     <Modal 
-      className="mx-auto bg-violet-500 mt-48 w-1/3 h-3/5 shadow-xl border-2 justify-center rounded-md py-8 text-white" 
+      className="mx-auto bg-violet-500 mt-48 w-1/3 h-3/4 shadow-2xl border-2 justify-center rounded-md py-8 text-black" 
       isOpen={props.isModalOpen} 
       onRequestClose={props.closeModal}
+      style={{
+        overlay: {
+          backgroundColor: 'rgba(0, 0, 0, 0.5)',
+        },
+      }}
     >
-      <div className='text-4xl w-full justify-center text-center mt-8 mb-8'>{apr}% APR</div>
+      <div className='text-5xl w-full justify-center text-center text-white mt-8 mb-8'>{apr}% APR</div>
       <div className='box-border flex justify-between w-full px-6 mb-6'>
         <button 
-          className="box-border border-2 hover:border-slate-200 border-blue-700 active:bg-blue-500 focus:bg-blue-500 focus:outline-none focus:ring focus:text-white hover:bg-violet-800 hover:border-1 w-[20%] h-[20%] text-blue font-bold py-2 px-4 rounded"
+          className="box-border border-[0.5px] text-white hover:border-slate-00 border-white active:bg-blue-500 focus:bg-blue-800 focus:outline-none focus:ring focus:text-yellow-300 hover:text-yellow-100 hover:bg-violet-800 hover:border-1 w-[20%] h-[20%] text-blue font-bold py-2 px-4 rounded"
           onClick={three_month_click}
         >
           3 months
         </button>
         <button 
-          className="box-border border-2 hover:border-slate-200 border-blue-700 active:bg-blue-500 focus:bg-blue-500 focus:outline-none focus:ring focus:text-white hover:bg-violet-800 hover:border-1 w-[20%] h-[20%] text-blue font-bold py-2 px-4 rounded"
+         className="box-border border-[0.5px] text-white hover:border-slate-00 border-white active:bg-blue-500 focus:bg-blue-800 focus:outline-none focus:ring focus:text-yellow-300 hover:text-yellow-100 hover:bg-violet-800 hover:border-1 w-[20%] h-[20%] text-blue font-bold py-2 px-4 rounded"
           onClick={six_month_click}
         >
           6 months
         </button>
         <button 
-          className="box-border border-2 hover:border-slate-200 border-blue-700 active:bg-blue-500 focus:bg-blue-500 focus:outline-none focus:ring focus:text-white hover:bg-violet-800 hover:border-1 w-[20%] h-[20%] text-blue font-bold py-2 px-4 rounded"
+          className="box-border border-[0.5px] text-white hover:border-slate-00 border-white active:bg-blue-500 focus:bg-blue-800 focus:outline-none focus:ring focus:text-yellow-300 hover:text-yellow-100 hover:bg-violet-800 hover:border-1 w-[20%] h-[20%] text-blue font-bold py-2 px-4 rounded"
           onClick={nine_month_click}
         >
           9 months
         </button>
         <button 
-          className="box-border border-2 hover:border-slate-200 border-blue-700 active:bg-blue-500 focus:bg-blue-500 focus:outline-none focus:ring focus:text-white hover:bg-violet-800 hover:border-1 w-[20%] h-[20%] text-blue font-bold py-2 px-4 rounded"
+          className="box-border border-[0.5px] text-white hover:border-slate-00 border-white active:bg-blue-500 focus:bg-blue-800 focus:outline-none focus:ring focus:text-yellow-300 hover:text-yellow-100 hover:bg-violet-800 hover:border-1 w-[20%] h-[20%] text-blue font-bold py-2 px-4 rounded"
           onClick={one_year_click}
         >
           12 months
@@ -105,13 +110,13 @@ const StakeModal = (props: any) => {
       </div> 
       <div className='flex justify-center gap-5 w-full px-6 mt-6'>
         <button 
-          className="box-border border-2 hover:border-slate-200 border-blue-700 active:bg-blue-500 focus:bg-blue-500 focus:outline-none focus:ring focus:text-white hover:bg-violet-800 hover:border-1 w-[20%] h-[20%] text-blue font-bold py-2 px-4 rounded"
+          className="box-border border-[0.5px] text-white hover:border-slate-00 border-white active:bg-blue-500 focus:bg-blue-800 focus:outline-none focus:ring focus:text-yellow-300 hover:text-yellow-100 hover:bg-violet-800 hover:border-1 w-[20%] h-[20%] text-blue font-bold py-2 px-4 rounded"
           onClick={props.closeModal}  
         >
           Cancel
         </button>
         <button 
-          className="box-border border-2 hover:border-slate-200 border-blue-700 active:bg-blue-500 focus:bg-blue-500 focus:outline-none focus:ring focus:text-white hover:bg-violet-800 hover:border-1 w-[20%] h-[20%] text-blue font-bold py-2 px-4 rounded"
+          className="box-border border-[0.5px] text-white hover:border-slate-00 border-white active:bg-blue-500 focus:bg-blue-800 focus:outline-none focus:ring focus:text-yellow-300 hover:text-yellow-100 hover:bg-violet-800 hover:border-1 w-[20%] h-[20%] text-blue font-bold py-2 px-4 rounded"
           onClick={handleSubmit}
         >
           Submit
