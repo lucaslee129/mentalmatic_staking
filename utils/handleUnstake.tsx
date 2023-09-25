@@ -21,21 +21,6 @@ const HandleUnstake =  async() => {
 
   let coinSuccessFlag = false;
   try{
-    //@desc Approve for Deposit
-    // const approveConfig  = await prepareWriteContract({
-    //   address: `0x${mmtContractAddress}`,
-    //   abi: mmtContractAbi,
-    //   functionName: "approve",
-    //   args:[unStaker, parseEther(stakingAmount.toString())],
-    // })
-
-    // const approveResponse = await writeContract(approveConfig);
-
-    // await waitForTransaction({
-    //   hash: approveResponse.hash
-    // })
-    // window.alert("Staking Aprrove Success");
-
     //@desc Call Deposit Function
     const coinRequestConfig  = await prepareWriteContract({
       address: `0x${mmtStakingContract}`,

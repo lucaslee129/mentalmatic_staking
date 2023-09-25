@@ -30,6 +30,6 @@
     "typescript": "^5.0.4",
     "use-debounce": "^9.0.4",
     "viem": "^1.10.9",
-    "wagmi": "^1.4.1"
+    "wagmi": "^1.4.2"
   }
 }

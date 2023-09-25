@@ -4,6 +4,7 @@ import styles from "../styles/Home.module.css";
 import ConnectBtn from "../components/ConnectButton";
 import WithdrawButton from "../components/WithdrawButton";
 import WithdrawModal from '../components/WithdrawModalTemp';
+import { useAccount } from "wagmi";
 
 const Home: NextPage = () => {
 
@@ -11,8 +12,11 @@ const Home: NextPage = () => {
   const [tokenAmount, setTokenAmount] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  const { isConnected } = useAccount();
   const handleClick = () => {
-    setIsModalOpen(true);
+    if(isConnected) {
+      setIsModalOpen(true);
+    }
   }
 
   const handleCloseModal = () =>  {
