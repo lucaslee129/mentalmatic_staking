@@ -3,7 +3,7 @@ import type { NextPage } from "next";
 import styles from "../styles/Home.module.css";
 import ConnectBtn from "../components/ConnectButton";
 import WithdrawButton from "../components/WithdrawButton";
-import WithdrawModal from '../components/WithdrawModal';
+import WithdrawModal from '../components/WithdrawModalTemp';
 
 const Home: NextPage = () => {
 
