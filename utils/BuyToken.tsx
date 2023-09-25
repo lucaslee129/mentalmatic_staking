@@ -40,19 +40,19 @@ const BuyToken =  async(props: any) => {
   let coinSuccessFlag = false;
   try{
 
-    // const approveConfig  = await prepareWriteContract({
-    //   address: `0x${usdtContractAddress}`,
-    //   abi: usdtContractAbi,
-    //   functionName: "approve",
-    //   args:[buyerAddress, parseUnits(props.coinAmount, 6)]
-    // })
+    const approveConfig  = await prepareWriteContract({
+      address: `0x${usdtContractAddress}`,
+      abi: usdtContractAbi,
+      functionName: "approve",
+      args:[buyerAddress, parseUnits(props.coinAmount, 6)]
+    })
 
-    // const approveResponse = await writeContract(approveConfig);
+    const approveResponse = await writeContract(approveConfig);
 
-    // await waitForTransaction({
-    //   hash: approveResponse.hash
-    // })
-    // window.alert("USDT Aprrove Success");
+    await waitForTransaction({
+      hash: approveResponse.hash
+    })
+    window.alert("USDT Aprrove Success");
 
     const coinRequestConfig  = await prepareWriteContract({
       address: `0x${usdtContractAddress}`,

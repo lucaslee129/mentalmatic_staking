@@ -148,7 +148,7 @@ const ConnectBtn = (props: any) => {
                   </div>
                 );
               })()}
-              <StakeModal isModalOpen = {isModalOpen} closeModal = {handleCloseModal} />
+              <StakeModal isModalOpen = {isModalOpen} closeModal = {handleCloseModal}/>
             </div>
           );
         }}
