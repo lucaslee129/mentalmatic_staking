@@ -40,7 +40,7 @@ const StakeModal = (props: any) => {
 
   return(
     <Modal 
-      className="mx-auto bg-blue-800 bg-opacity-50 bg-blur backdrop-blur-sm mt-20 w-1/3 h-3/4 shadow-2xl justify-center rounded-3xl py-8 text-black"
+      className="mx-auto bg-blue-300 bg-opacity-50 bg-blur backdrop-blur-sm mt-20 w-1/3 h-3/4 shadow-2xl justify-center rounded-3xl py-8 text-black drop-shadow-[0_5px_5px_rgba(0,0,0,0.35)]" 
       isOpen={props.isModalOpen} 
       onRequestClose={props.closeModal}
       style={{
@@ -72,10 +72,10 @@ const StakeModal = (props: any) => {
       </div>
       <div className='text-sm w-full justify-center text-red-300 text-center my-4'>{errorMessage}</div>
       <hr className="flex w-[60%] border-black mx-auto my-8" />
-      <div className='pr-20 pl-24  w-[100%] justify-centerr'>
-        <p className='my-2'>- You selected staking for <span className='text-xl'>1</span> Months and <span className='text-xl'>{stakingAmount}</span> MMT Tokens.</p>
-        <p className='my-2'>- You will receive <span className='text-xl'>{(12 / 12) / 100 * stakingAmount}</span> per month. <span className='text-xl'>{(12 / 12) / 100 * stakingAmount * 3}</span> in 3 months, and total APR is  <span className='text-xl'>{12 / 100 * stakingAmount}</span> MMT Tokens as rewards. </p>
-        <p>- Staking end date: <span className='text-xl'>123</span></p>
+      <div className='pr-12 pl-16  w-[100%] justify-centerr text-xl'>
+        <p className='my-2'>- You selected staking for <span className='text-2xl'>1</span> Months and <span className='text-2xl'>{stakingAmount}</span> MMT Tokens.</p>
+        <p className='my-2'>- You will receive <span className='text-2xl'>{(12 / 12) / 100 * stakingAmount}</span> per month. <span className='text-2xl'>{(12 / 12) / 100 * stakingAmount * 3}</span> in 3 months, and total APR is  <span className='text-2xl'>{12 / 100 * stakingAmount}</span> MMT Tokens as rewards. </p>
+        <p>- Staking end date: <span className='text-2xl'>123</span></p>
       </div>
       <hr className="flex w-[60%] mx-auto my-8" />
       <div className='flex justify-center gap-5 w-full px-6 mt-6'>

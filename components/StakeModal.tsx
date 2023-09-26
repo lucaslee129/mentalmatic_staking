@@ -45,7 +45,7 @@ const StakeModal = (props: any) => {
 
   const handleSubmit = () => {
     if(stakingAmount < 100000) {
-      setErrorMessage("Please stake more than 10,000 MMT Token");
+      setErrorMessage("Please stake more than 100,000 MMT Token");
     } else if (apr ==0) {
       setErrorMessage("Please select your staking period");
     } else {
@@ -66,10 +66,9 @@ const StakeModal = (props: any) => {
     setEndDate(oneMonthFromNow);
   }
  
-
   return(
     <Modal 
-      className="mx-auto bg-blue-800 bg-opacity-50 bg-blur backdrop-blur-sm mt-20 w-1/3 h-3/4 shadow-2xl justify-center rounded-3xl py-8 text-black" 
+      className="mx-auto bg-blue-400 bg-opacity-50 bg-blur backdrop-blur-sm mt-20 w-1/3 h-3/4 shadow-2xl justify-center rounded-3xl py-8 text-black drop-shadow-[0_5px_5px_rgba(0,0,0,0.35)]" 
       isOpen={props.isModalOpen} 
       onRequestClose={props.closeModal}
       style={{
@@ -127,12 +126,12 @@ const StakeModal = (props: any) => {
           Submit
         </button>
       </div>
-      <div className='text-sm w-full justify-center text-red-300 text-center my-4'>{errorMessage}</div>
+      <div className='text-sm w-full justify-center text-red-600 text-center my-4'>{errorMessage}</div>
       <hr className="flex w-[60%] border-black mx-auto my-8" />
-      <div className='pr-20 pl-24  w-[100%] justify-center'>
-        <p className='my-2'>- You selected staking for <span className='text-xl'>{months}</span> Months and <span className='text-xl'>{stakingAmount}</span> MMT Tokens.</p>
-        <p className='my-2'>- You will receive <span className='text-xl'>{(apr / 12) / 100 * stakingAmount}</span> per month. <span className='text-xl'>{(apr / 12) / 100 * stakingAmount * 3}</span> in 3 months, and total APR is  <span className='text-xl'>{apr / 100 * stakingAmount}</span> MMT Tokens as rewards. </p>
-        <p>- Staking end date: <span className='text-xl'>{endDate.month}/{endDate.date}/{endDate.year} at UTC{endDate.timezone/60}</span></p>
+      <div className='pr-12 pl-16 text-xl w-[100%] justify-center'>
+        <p className='my-2'>- You selected staking for <span className='text-2xl'>{months}</span> Months and <span className='text-2xl'>{stakingAmount}</span> MMT Tokens.</p>
+        <p className='my-2'>- You will receive <span className='text-2xl'>{(apr / 12) / 100 * stakingAmount}</span> per month. <span className='text-2xl'>{(apr / 12) / 100 * stakingAmount * 3}</span> in 3 months, and total APR is  <span className='text-2xl'>{apr / 100 * stakingAmount}</span> MMT Tokens as rewards. </p>
+        <p>- Staking end date: <span className='text-2xl'>{endDate.month}/{endDate.date}/{endDate.year} at UTC{endDate.timezone/60}</span></p>
       </div>
     </Modal>
   )
