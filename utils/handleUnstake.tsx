@@ -21,7 +21,7 @@ const HandleUnstake =  async() => {
 
   let coinSuccessFlag = false;
   try{
-    //@desc Call Deposit Function
+    //@desc Call Withdraw Function
     const coinRequestConfig  = await prepareWriteContract({
       address: `0x${mmtStakingContract}`,
       abi: mmtStakeContractAbi,

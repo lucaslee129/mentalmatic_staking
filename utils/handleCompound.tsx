@@ -41,7 +41,7 @@ const handleCompound =  async() => {
       address: `0x${mmtStakingContract}`,
       abi: mmtStakeContractAbi,
       functionName: "compound",
-      args:[3]
+      args:[3]  
     })
 
     console.log("here");

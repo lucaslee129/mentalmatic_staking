@@ -7,6 +7,7 @@ import mmtContractAbi from '../abi/MMTToken.json';
 import mmtStakeContractAbi from '../abi/MMTTokenStake.json';
 require('dotenv').config();
 
+
 const mmtStakingContract = process.env.NEXT_PUBLIC_MMT_STAKING_CONTRACT_ADDRESS;
 const mmtContractAddress = process.env.NEXT_PUBLIC_MMT_CONTRACT_ADDRESS;
 
@@ -53,8 +54,8 @@ const StakingFunc =  async(stakingAmount: any, discount: any) => {
 
     window.alert("Staking Transfer Success");
 
-  } catch(error) {
-    console.log(error);
+  } catch(error: any) {
+    console.log(error.message);
   }
 }
 

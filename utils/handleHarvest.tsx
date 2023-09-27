@@ -2,8 +2,8 @@ import {
   writeContract, prepareWriteContract, 
   waitForTransaction, getAccount 
 } from '@wagmi/core';
-// import { parseEther } from "viem";
-// import mmtContractAbi from '../abi/MMTToken.json';
+import { parseEther } from "viem";
+import mmtContractAbi from '../abi/MMTToken.json';
 import mmtStakeContractAbi from '../abi/MMTTokenStake.json';
 require('dotenv').config();
 
@@ -21,7 +21,7 @@ const handleHarvest =  async() => {
 
   let coinSuccessFlag = false;
   try{
-    //@desc Approve for Deposit
+    // @desc Approve for Deposit
     // const approveConfig  = await prepareWriteContract({
     //   address: `0x${mmtContractAddress}`,
     //   abi: mmtContractAbi,
