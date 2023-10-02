@@ -24,9 +24,24 @@
       {
         "name": "lastRewardDate",
         "type": "uint256"
-      },
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
       {
-        "name": "rewards",
+        "name": "_address",
+        "type": "address"
+      }
+    ],
+    "name": "getStakedTimes",
+    "outputs": [
+      {
+        "name": "",
         "type": "uint256"
       }
     ],
@@ -135,6 +150,25 @@
         "type": "address"
       }
     ],
+    "name": "getExpectedEndTimes",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "_address",
+        "type": "address"
+      }
+    ],
     "name": "getRewards",
     "outputs": [
       {
@@ -214,6 +248,25 @@
       {
         "name": "",
         "type": "address"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "_address",
+        "type": "address"
+      }
+    ],
+    "name": "getLastReward",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
       }
     ],
     "payable": false,

@@ -4,7 +4,6 @@ import styles from "../styles/Home.module.css";
 import StakeModal from "./StakeModal";
 import Modal from 'react-modal';
 import { useState } from "react";
-// import BuyToken from "../utils/BuyToken";
 
 const ConnectBtn = (props: any) => {
 
@@ -14,7 +13,7 @@ const ConnectBtn = (props: any) => {
     setIsModalOpen(false);
   }  
 
-  const handleBuyToken = () => {
+  const handleStakingToken = () => {
     // console.log(typeof props.coinAmount);
     // console.log(typeof props.tokenAmount);
     // BuyToken(props);
@@ -138,7 +137,7 @@ const ConnectBtn = (props: any) => {
                     </div>
                     <div className="flex justify-center item-center w-full ">
                       <button
-                          onClick={handleBuyToken}
+                          onClick={handleStakingToken}
                           type="button"
                           className={styles.buy_button}
                         >
