@@ -31,7 +31,7 @@ const Home: NextPage = () => {
       <div className="flex justify-center gap-5">
         <WithdrawButton onClick = {handleClick} />
       </div>
-      <WithdrawModal isModalOpen = {isModalOpen} closeModal = {handleCloseModal} />
+      <WithdrawModal isModalOpen = {isModalOpen} isConnected = {isConnected} closeModal = {handleCloseModal} />
     </div>
   );
 

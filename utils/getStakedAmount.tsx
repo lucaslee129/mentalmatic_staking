@@ -14,13 +14,6 @@ const getStakedAmount  = async() => {
 
   console.log(stakerAddress);
 
-  const rewards =await readContract({
-    address: `0x${contractAddress}`,
-    abi: contractAbi,
-    functionName: "getRewards",
-    args: [stakerAddress]
-  })
-
   const stakedAmount = await readContract({
     address: `0x${contractAddress}`,
     abi: contractAbi,
@@ -28,33 +21,46 @@ const getStakedAmount  = async() => {
     args: [stakerAddress]
   })
 
-  // const startTime = await readContract({
-  //   address: `0x${contractAddress}`,
-  //   abi: contractAbi,
-  //   functionName: "getStakedTimes",
-  //   args: [stakerAddress]
-  // })
+  const rewards =await readContract({
+    address: `0x${contractAddress}`,
+    abi: contractAbi,
+    functionName: "getRewards",
+    args: [stakerAddress]
+  })
 
-  // const endTime =await readContract({
-  //   address: `0x${contractAddress}`,
-  //   abi: contractAbi,
-  //   functionName: "getExpectedEndTimes",
-  //   args: [stakerAddress]
-  // })
+  const startTime = await readContract({
+    address: `0x${contractAddress}`,
+    abi: contractAbi,
+    functionName: "getStakedTimes",
+    args: [stakerAddress]
+  })
 
-  // const lastRewardTime =await readContract({
-  //   address: `0x${contractAddress}`,
-  //   abi: contractAbi,
-  //   functionName: "getLastReward",
-  //   args: [stakerAddress]
-  // })
+  const endTime =await readContract({
+    address: `0x${contractAddress}`,
+    abi: contractAbi,
+    functionName: "getExpectedEndTimes",
+    args: [stakerAddress]
+  })
+
+  const lastRewardTime =await readContract({
+    address: `0x${contractAddress}`,
+    abi: contractAbi,
+    functionName: "getLastReward",
+    args: [stakerAddress]
+  })
+
+  const stakingPeriod = (Number(endTime) - Number(startTime)) / 60;
+  
+  const realStartTime = new Date(Number(startTime) * 1000).toLocaleDateString();
+  const realEndDate = new Date(Number(endTime) * 1000).toLocaleDateString();
 
   const stakingInfo = {
     rewards: await rewards,
     stakedAmount: await stakedAmount,
-    // startTime: startTime,
-    // endTime: endTime,
-    // lastRewardTime: lastRewardTime
+    startTime: realStartTime,
+    endTime: realEndDate,
+    lastRewardTime: await lastRewardTime,
+    stakingPeriod: stakingPeriod
   };
 
   return stakingInfo;

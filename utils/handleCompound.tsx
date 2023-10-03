@@ -2,59 +2,59 @@ import {
   writeContract, prepareWriteContract, 
   waitForTransaction, getAccount 
 } from '@wagmi/core';
-// import { parseEther } from "viem";
-// import mmtContractAbi from '../abi/MMTToken.json';
 import mmtStakeContractAbi from '../abi/MMTTokenStake.json';
+import Notiflix from 'notiflix';
+
 require('dotenv').config();
 
 const mmtStakingContract = process.env.NEXT_PUBLIC_MMT_STAKING_CONTRACT_ADDRESS;
 // const mmtContractAddress = process.env.NEXT_PUBLIC_MMT_CONTRACT_ADDRESS;
 
 
-const handleCompound =  async() => {
+const handleCompound =  async(rewardAmount: any) => {
 
-  let unStaker: any;
-  const { address, isConnected} = getAccount();
-  if(isConnected) {
-    unStaker = address;
-  }
+  if(rewardAmount == 0) {
+    Notiflix.Notify.failure("No staking tokens");
+  } else {  
+    let unStaker: any;
+    const { address, isConnected} = getAccount();
+    if(isConnected) {
+      unStaker = address;
+    }
 
-  let coinSuccessFlag = false;
-  try{
-    //@desc Approve for Deposit
-    // const approveConfig  = await prepareWriteContract({
-    //   address: `0x${mmtContractAddress}`,
-    //   abi: mmtContractAbi,
-    //   functionName: "approve",
-    //   args:[unStaker, parseEther(stakingAmount.toString())],
-    // })
+    let coinSuccessFlag = false;
+    try{
+      //@desc Call Deposit Function
+      const coinRequestConfig  = await prepareWriteContract({
+        address: `0x${mmtStakingContract}`,
+        abi: mmtStakeContractAbi,
+        functionName: "compound",
+        args:[3]  
+      })
 
-    // const approveResponse = await writeContract(approveConfig);
+      const coinResponse = await writeContract(coinRequestConfig);
 
-    // await waitForTransaction({
-    //   hash: approveResponse.hash
-    // })
-    // window.alert("Staking Aprrove Success");
+      const receipt = await waitForTransaction({
+        hash: coinResponse.hash
+      })
+      if(receipt) {
+        Notiflix.Notify.success("Compounded Successfully");
+      }
 
-    //@desc Call Deposit Function
-    const coinRequestConfig  = await prepareWriteContract({
-      address: `0x${mmtStakingContract}`,
-      abi: mmtStakeContractAbi,
-      functionName: "compound",
-      args:[3]  
-    })
-
-    console.log("here");
-    const coinResponse = await writeContract(coinRequestConfig);
-
-    await waitForTransaction({
-      hash: coinResponse.hash
-    })
-
-    window.alert("Staking Transfer Success");
-
-  } catch(error) {
-    console.log(error); 
+    } catch(error) {
+      // const errorMessage = error.message.match(/reverted with the following reason:\n(.*?)\n/)[1];
+      // Notiflix.Notify.failure(errorMessage);
+      
+      const errorMessage = await error.message;
+      const rejectError = "User rejected the request.";
+      const requireError = "reverted with the following reason";
+      if(errorMessage.includes(rejectError)) {
+        Notiflix.Notify.failure("User rejected the request.");
+      } else if(errorMessage.includes(requireError)) {
+        const errMsg = error.message.match(/reverted with the following reason:\n(.*?)\n/)[1];
+        Notiflix.Notify.failure(errMsg);
+      }
+    }
   }
 }
 

@@ -9,32 +9,37 @@ const StakeModal = (props: any) => {
   const [selectedItem, setSelectedItem] = useState(0);
   const [headerText, setHeaderText] = useState("SELECT YOUR OPTION");
   const [stakingAmount, setStakingAmount] = useState(0);
+  const [stakingPeriod, setStakingPeriod] = useState(0);
   const [rewardAmount, setRewardAmount] = useState(0);
   const [errorMessage, setErrorMessage] = useState("");
+  const [endDate, setEndDate] = useState("");
   const [text, setText] = useState(
     <div className='pr-12 pl-16  w-[100%] justify-center text-center text-xl'>
       <p className='my-2'>Loading...</p>
     </div>
   );
 
-  useEffect(() => {
-    const func = async () => {
+  // useEffect(() => {
+    const vestingInfo = async () => {
       let stakedData = await getStakedAmount();
       setStakingAmount(Number(stakedData.stakedAmount) * (10 ** -18));
       setRewardAmount(Number(stakedData.rewards) * (10 ** -18)  );
+      setStakingPeriod(stakedData.stakingPeriod);
+      setEndDate(stakedData.endTime);
       console.log(stakedData);
     }
-    func();
-  })
+  //   vestingInfo();
+  // }, [stakingAmount, rewardAmount])
 
   const unstakeClick = () => {
     setSelectedItem(1);
     setHeaderText("UNSTAKE");
+    vestingInfo();
     setText(
-      <div className='pr-12 pl-16  w-[100%] justify-centerr text-xl'>
-        <p className='my-2'>- You staked <span className='text-2xl'>{stakingAmount}</span> $MMT Tokens for <span className='text-2xl'>3</span> Months.</p>
+      <div className='pr-12 pl-16  w-[100%] justify-center text-xl'>
+        <p className='my-2'>- You staked <span className='text-2xl'>{stakingAmount}</span> $MMT Tokens for <span className='text-2xl'>{stakingPeriod}</span> Months.</p>
         <p className='my-2'>- You will receive <span className='text-2xl'>{stakingAmount}</span> $MMT staking Tokens and <span className='text-2xl'>{rewardAmount}</span> $MMT Tokens as rewards.</p>
-        <p>- Your Staking end date: <span className='text-2xl'>123</span></p>
+        <p>- Your Staking end date: <span className='text-2xl'>{endDate}</span></p>
       </div>
     )
   }
@@ -42,11 +47,12 @@ const StakeModal = (props: any) => {
   const harvestClick = () => {
     setSelectedItem(2);
     setHeaderText("HARVEST");
+    vestingInfo();
     setText(
       <div className='pr-12 pl-16  w-[100%] justify-centerr text-xl'>
-        <p className='my-2'>- You staked <span className='text-2xl'>{stakingAmount}</span> $MMT Tokens for <span className='text-2xl'>3</span> Months.</p>
+        <p className='my-2'>- You staked <span className='text-2xl'>{stakingAmount}</span> $MMT Tokens for <span className='text-2xl'>{stakingPeriod}</span> Months.</p>
         <p className='my-2'>- You will receive  <span className='text-2xl'>{rewardAmount}</span> $MMT Tokens as rewards.</p>
-        <p>- Your Staking end date: <span className='text-2xl'>123</span></p>
+        <p>- Your Staking end date: <span className='text-2xl'>{endDate}</span></p>
       </div>
     )
   }
@@ -54,9 +60,10 @@ const StakeModal = (props: any) => {
   const compoundClick = () => {
     setSelectedItem(3);
     setHeaderText("COMPOUND");
+    vestingInfo();
     setText(
       <div className='pr-12 pl-16  w-[100%] justify-centerr text-xl'>
-        <p className='my-2'>- You staked <span className='text-2xl'>{stakingAmount}</span> $MMT Tokens for <span className='text-2xl'>3</span> Months.</p>
+        <p className='my-2'>- You staked <span className='text-2xl'>{stakingAmount}</span> $MMT Tokens for <span className='text-2xl'>{stakingPeriod}</span> Months.</p>
         <p className='my-2'>- Your Staking Amount is <span className='text-2xl'>{stakingAmount}</span> $MMT Tokens and Reward Tokens are <span className='text-2xl'>{rewardAmount}</span> $MMT Tokens.</p>
         <p className='my-2'>- Your total compound tokens are <span className='text-2xl'>{ stakingAmount + rewardAmount }</span> $MMT Tokens.</p>
       </div>
@@ -67,11 +74,11 @@ const StakeModal = (props: any) => {
     if(selectedItem == 0) {
       setErrorMessage("Please select your staking option");
     } else if (selectedItem == 1) {
-      HandleUnstake();
+      HandleUnstake(stakingAmount);
     } else if (selectedItem == 2) {
-      handleHarvest();
+      handleHarvest(rewardAmount);
     } else if (selectedItem == 3) {
-      handleCompound();
+      handleCompound(rewardAmount);
     }
   }
 

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Modal from 'react-modal';
 import StakingFunc from '../utils/StakingFunc';
+import getStakedAmount from '../utils/getStakedAmount';
 
 const StakeModal = (props: any) => {
   const [apr, setApr] = useState(0)
@@ -43,14 +44,15 @@ const StakeModal = (props: any) => {
     setStakingAmount(amount);
   }
 
-  const handleSubmit = () => {
+  const handleSubmit = async() => {
+    const stakedAmount = await getStakedAmount();
     if(stakingAmount < 100000) {
       setErrorMessage("Please stake more than 100,000 MMT Token");
     } else if (apr ==0) {
       setErrorMessage("Please select your staking period");
     } else {
       setErrorMessage("");
-      StakingFunc(stakingAmount, apr);
+      StakingFunc(stakedAmount.stakedAmount ,stakingAmount, apr);
     }
   }
 
@@ -114,13 +116,13 @@ const StakeModal = (props: any) => {
   </div> 
   <div className='flex justify-center gap-5 w-full px-6 mt-6'>
     <button 
-      className="box-border bg-violet-600 text-white active:bg-violet-500 sm:w-[20%] h-[20%] font-bold py-2 px-4 rounded mb-2 sm:mb-0"
+      className="box-border bg-violet-600 text-white active:bg-violet-500 sm:w-[20%] h-[20%] hover:bg-violet-500 hover:border-1 font-bold py-2 px-4 rounded mb-2 sm:mb-0"
       onClick={props.closeModal}  
     >
       Cancel
     </button>
     <button 
-      className="box-border bg-violet-600 bg-violet-500 active:bg-violet-500 text-white sm:w-[20%] h-[20%] font-bold py-2 px-4 rounded"
+      className="box-border bg-violet-600 text-white active:bg-violet-500 sm:w-[20%] h-[20%] hover:bg-violet-500 hover:border-1 font-bold py-2 px-4 rounded mb-2 sm:mb-0"
       onClick={handleSubmit}
     >
       Submit
