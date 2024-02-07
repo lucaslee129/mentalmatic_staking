@@ -14,6 +14,7 @@ const mmtContractAddress = process.env.NEXT_PUBLIC_MMT_CONTRACT_ADDRESS;
 
 
 const StakingFunc =  async(stakedAmount:any, stakingAmount: any, discount: any) => {
+  console.log("discount>>>>>", discount);                                                                                                                                                                                                                                                                                         
 
   if(stakedAmount) {
     Notiflix.Notify.failure("Already Staked");

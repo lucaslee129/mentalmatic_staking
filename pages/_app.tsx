@@ -8,13 +8,14 @@ import {
   trustWallet,
   walletConnectWallet,
 } from "@rainbow-me/rainbowkit/wallets";
-import { configureChains, mainnet, sepolia } from "wagmi";
+import { configureChains } from "wagmi";
+import {bsc} from "wagmi/chains";
 import { publicProvider } from "wagmi/providers/public";
 import type { AppProps } from "next/app";
 import { RainbowKitProvider } from "@rainbow-me/rainbowkit";
 
 const { chains, publicClient, webSocketPublicClient } = configureChains(
-  [mainnet, sepolia],
+  [bsc],
   [publicProvider()]
 );
 const connectors = connectorsForWallets([

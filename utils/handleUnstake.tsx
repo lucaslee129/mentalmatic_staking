@@ -37,7 +37,7 @@ const HandleUnstake =  async(stakingAmount: any) => {
       if(receipt) {
         Notiflix.Notify.success("Unstaked successfully");
       }
-    } catch(error) {
+    } catch(error: any ) {
       const errorMessage = await error.message;
       const rejectError = "User rejected the request.";
       const requireError = "reverted with the following reason";

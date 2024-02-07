@@ -38,7 +38,7 @@ const handleHarvest =  async(rewardAmount: any) => {
       }
 
 
-    } catch(error) {
+    } catch(error: any) {
       const errorMessage = await error.message;
       const rejectError = "User rejected the request.";
       const requireError = "reverted with the following reason";

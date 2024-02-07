@@ -46,15 +46,21 @@ const StakeModal = (props: any) => {
 
   const handleSubmit = async() => {
     const stakedAmount = await getStakedAmount();
-    if(stakingAmount < 100000) {
-      setErrorMessage("Please stake more than 100,000 MMT Token");
-    } else if (apr ==0) {
+    if(stakingAmount <= 0) {
+      setErrorMessage("Please stake more than 0 MMT Token");
+    } else if(apr == 0) {
       setErrorMessage("Please select your staking period");
     } else {
       setErrorMessage("");
-      StakingFunc(stakedAmount.stakedAmount ,stakingAmount, apr);
+      StakingFunc(stakedAmount.stakedAmount ,stakingAmount, months);
     }
   }
+
+  const handleCancel =async () => {
+    setStakingAmount(0);
+    setErrorMessage("");
+    props.closeModal();
+  } 
 
   const calEndDate = (months: number) => {
     const today = new Date();
@@ -117,7 +123,7 @@ const StakeModal = (props: any) => {
   <div className='flex justify-center gap-5 w-full px-6 mt-6'>
     <button 
       className="box-border bg-violet-600 text-white active:bg-violet-500 sm:w-[20%] h-[20%] hover:bg-violet-500 hover:border-1 font-bold py-2 px-4 rounded mb-2 sm:mb-0"
-      onClick={props.closeModal}  
+      onClick={handleCancel}  
     >
       Cancel
     </button>
@@ -132,7 +138,7 @@ const StakeModal = (props: any) => {
   <hr className="flex w-[60%] border-black mx-auto my-8" />
   <div className='pr-12 pl-16 sm:text-md w-full justify-center'>
     <p className='my-2'>- You are staking <span className='text-2xl'>{stakingAmount}</span> $MMT Tokens for <span className='text-2xl'>{months}</span> Months.</p>
-    <p className='my-2'>- You will receive <span className='text-2xl'>{((apr / 12) / 100 * stakingAmount * 3).toFixed(2)}</span> $MMT at the end of the staking period. </p>
+    <p className='my-2'>- You will receive <span className='text-2xl'>{(((apr / 12) / 100) * months * stakingAmount).toFixed(2)}</span> $MMT at the end of the staking period. </p>
     <p>- Staking end date: <span className='text-2xl'>{endDate.month + 1}/{endDate.date}/{endDate.year} at UTC{endDate.timezone/60}</span></p>
   </div>
 </Modal>

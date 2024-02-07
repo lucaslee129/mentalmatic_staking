@@ -41,7 +41,7 @@ const handleCompound =  async(rewardAmount: any) => {
         Notiflix.Notify.success("Compounded Successfully");
       }
 
-    } catch(error) {
+    } catch(error: any) {
       // const errorMessage = error.message.match(/reverted with the following reason:\n(.*?)\n/)[1];
       // Notiflix.Notify.failure(errorMessage);
       

@@ -14,20 +14,40 @@ const getStakedAmount  = async() => {
 
   console.log(stakerAddress);
 
-  const stakedAmountFunction: any = await readContract({
+  const stakedAmount = await readContract({
     address: `0x${contractAddress}`,
     abi: contractAbi,
-    functionName: "stakes",
+    functionName: "getStakedAmount",
     args: [stakerAddress]
   })
 
-  console.log("stakedAmountFunction", stakedAmountFunction);
+  const rewards =await readContract({
+    address: `0x${contractAddress}`,
+    abi: contractAbi,
+    functionName: "getRewards",
+    args: [stakerAddress]
+  })
 
-  const stakedAmount = await stakedAmountFunction[1];
-  const rewards = await stakedAmountFunction[5];
-  const startTime = await stakedAmountFunction[2];
-  const endTime = await stakedAmountFunction[3];
-  const lastRewardTime = await stakedAmountFunction[4];
+  const startTime = await readContract({
+    address: `0x${contractAddress}`,
+    abi: contractAbi,
+    functionName: "getStakedTimes",
+    args: [stakerAddress]
+  })
+
+  const endTime =await readContract({
+    address: `0x${contractAddress}`,
+    abi: contractAbi,
+    functionName: "getExpectedEndTimes",
+    args: [stakerAddress]
+  })
+
+  const lastRewardTime =await readContract({
+    address: `0x${contractAddress}`,
+    abi: contractAbi,
+    functionName: "getLastReward",
+    args: [stakerAddress]
+  })
 
   const stakingPeriod = (Number(endTime) - Number(startTime)) / 60;
   

@@ -22,8 +22,9 @@ const StakeModal = (props: any) => {
   // useEffect(() => {
     const vestingInfo = async () => {
       let stakedData = await getStakedAmount();
+      console.log("stakedData.stakedAmount", stakedData.stakedAmount);
       setStakingAmount(Number(stakedData.stakedAmount) * (10 ** -18));
-      setRewardAmount(Number(stakedData.rewards) * (10 ** -18)  );
+      setRewardAmount(Number(stakedData.rewards) * (10 ** -18));
       setStakingPeriod(stakedData.stakingPeriod);
       setEndDate(stakedData.endTime);
       console.log(stakedData);
