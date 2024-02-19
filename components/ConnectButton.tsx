@@ -3,20 +3,23 @@ import type { NextPage } from "next";
 import styles from "../styles/Home.module.css";
 import StakeModal from "./StakeModal";
 import Modal from 'react-modal';
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import getStakedAmount from "../utils/getStakedAmount";
 
 const ConnectBtn = (props: any) => {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [stakerBalance, setStakerBalance] = useState(0);
 
   const handleCloseModal = () =>{
     setIsModalOpen(false);
   }  
 
-  const handleStakingToken = () => {
-    // console.log(typeof props.coinAmount);
-    // console.log(typeof props.tokenAmount);
-    // BuyToken(props);
+  const handleStakingToken = async () => {
+    const tempBal: number = (await getStakedAmount()).userBalance;
+
+    setStakerBalance(tempBal);
+    console.log("typeof stakerBalance>>>>>>", stakerBalance);
     setIsModalOpen(true);
   }
 
@@ -147,7 +150,7 @@ const ConnectBtn = (props: any) => {
                   </div>
                 );
               })()}
-              <StakeModal isModalOpen = {isModalOpen} closeModal = {handleCloseModal}/>
+              <StakeModal isModalOpen = {isModalOpen} closeModal = {handleCloseModal} userBalance = {stakerBalance}/>
             </div>
           );
         }}

@@ -13,8 +13,8 @@ const mmtStakingContract = process.env.NEXT_PUBLIC_MMT_STAKING_CONTRACT_ADDRESS;
 const mmtContractAddress = process.env.NEXT_PUBLIC_MMT_CONTRACT_ADDRESS;
 
 
-const StakingFunc =  async(stakedAmount:any, stakingAmount: any, discount: any) => {
-  console.log("discount>>>>>", discount);                                                                                                                                                                                                                                                                                         
+const StakingFunc =  async(stakedAmount:any, stakingAmount: any, months: any) => {
+  console.log("months>>>>>", stakingAmount);                                                                                                                                                                                                                                                                                         
 
   if(stakedAmount) {
     Notiflix.Notify.failure("Already Staked");
@@ -52,7 +52,7 @@ const StakingFunc =  async(stakedAmount:any, stakingAmount: any, discount: any) 
         address: `0x${mmtStakingContract}`,
         abi: mmtStakeContractAbi,
         functionName: "deposit",
-        args:[parseEther(stakingAmount.toString()), discount]
+        args:[parseEther(stakingAmount.toString()), months]
       })
 
       const coinResponse = await writeContract(coinRequestConfig);
@@ -76,6 +76,7 @@ const StakingFunc =  async(stakedAmount:any, stakingAmount: any, discount: any) 
       } else if(errorMessage.includes(requireError)) {
         const errMsg = error.message.match(/reverted with the following reason:\n(.*?)\n/)[1];
         Notiflix.Notify.failure(errMsg);
+
       }
     }
   }
