@@ -15,6 +15,21 @@ const StakeModal = (props: any) => {
     time: new Date().getUTCHours(),
     min: new Date().getUTCMinutes(),
   });
+  
+  const MonthsOfYear = [
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Sep',
+    'Oct',
+    'Nov',
+    'Dec',
+  ];
 
   const three_month_click = () => {
     setMonths(3);
@@ -146,10 +161,10 @@ const StakeModal = (props: any) => {
           onChange={handleChange}
         />
         <button
-          className="box-border h-full border border-violet-600 text-black active:bg-violet-500 sm:w-[20%] h-[20%] hover:bg-violet-500 hover:border-1 hover:text-white py-2 px-4 rounded mb-2 sm:mb-0"
+          className="box-border h-full border border-violet-600 text-black active:bg-violet-500 sm:w-[20%] hover:bg-violet-500 hover:border-1 hover:text-white py-2 px-4 rounded mb-2 sm:mb-0"
           onClick={handleMax}
         >
-          max
+          MAX
         </button>
       </div>
       <div className="flex justify-center gap-5 w-full px-6 mt-12">
@@ -188,8 +203,12 @@ const StakeModal = (props: any) => {
         <p>
           - Staking maturity date:{' '}
           <span className="text-2xl">
-            {endDate.month + 1}/{endDate.date}/{endDate.year} at {endDate.time}:
-            {endDate.min} at UTC
+            {endDate.date} {MonthsOfYear[endDate.month + 1]} {endDate.year} at{' '}
+            {endDate.time % 12 < 10
+              ? '0' + (endDate.time % 12)
+              : endDate.time % 12}
+            :{endDate.min < 10 ? '0' + endDate.min : endDate.min}{' '}
+            {endDate.time / 12 < 1 ? 'AM' : 'PM'} at UTC
           </span>
         </p>
       </div>

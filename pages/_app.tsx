@@ -9,7 +9,7 @@ import {
   walletConnectWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 import { configureChains } from 'wagmi';
-import { bsc } from 'wagmi/chains';
+import { bsc, bscTestnet } from 'wagmi/chains';
 import { publicProvider } from 'wagmi/providers/public';
 import type { AppProps } from 'next/app';
 import { RainbowKitProvider } from '@rainbow-me/rainbowkit';

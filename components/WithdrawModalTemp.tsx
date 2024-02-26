@@ -13,12 +13,33 @@ const StakeModal = (props: any) => {
   const [stakingPeriod, setStakingPeriod] = useState(0);
   const [rewardAmount, setRewardAmount] = useState(0);
   const [errorMessage, setErrorMessage] = useState('');
-  const [endDate, setEndDate] = useState('');
+  const [endDate, setEndDate] = useState({
+    year: new Date().getUTCFullYear(),
+    month: new Date().getUTCMonth(),
+    date: new Date().getUTCDate(),
+    time: new Date().getUTCHours(),
+    min: new Date().getUTCMinutes(),
+  });
   const [text, setText] = useState(
     <div className="pr-12 pl-16  w-[100%] justify-center text-center text-xl">
       <p className="my-2">Loading...</p>
     </div>
   );
+
+  const MonthsOfYear = [
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Sep',
+    'Oct',
+    'Nov',
+    'Dec',
+  ];
 
   // useEffect(() => {
   const vestingInfo = async () => {
@@ -58,7 +79,16 @@ const StakeModal = (props: any) => {
         </p>
         <p>
           - My staking maturity date:{' '}
-          <span className="text-2xl">{endDate}</span>
+          <span className="text-2xl">
+            <span className="text-2xl">
+              {endDate.date} {MonthsOfYear[endDate.month + 1]} {endDate.year} at{' '}
+              {endDate.time % 12 < 10
+                ? '0' + (endDate.time % 12)
+                : endDate.time % 12}
+              :{endDate.min < 10 ? '0' + endDate.min : endDate.min}{' '}
+              {endDate.time / 12 < 1 ? 'AM' : 'PM'} at UTC
+            </span>
+          </span>
         </p>
       </div>
     );
@@ -87,7 +117,16 @@ const StakeModal = (props: any) => {
         </p>
         <p>
           - My staking maturity date:{' '}
-          <span className="text-2xl">{endDate}</span>
+          <span className="text-2xl">
+            <span className="text-2xl">
+              {endDate.date} {MonthsOfYear[endDate.month + 1]} {endDate.year} at{' '}
+              {endDate.time % 12 < 10
+                ? '0' + (endDate.time % 12)
+                : endDate.time % 12}
+              :{endDate.min < 10 ? '0' + endDate.min : endDate.min}{' '}
+              {endDate.time / 12 < 1 ? 'AM' : 'PM'} at UTC
+            </span>
+          </span>
         </p>
       </div>
     );
@@ -124,7 +163,17 @@ const StakeModal = (props: any) => {
           $MMT at the end of the staking period.
         </p>
         <p className="my-2">
-          - Staking maturity date: <span className="text-2xl">{endDate}</span>
+          - Staking maturity date:{' '}
+          <span className="text-2xl">
+            <span className="text-2xl">
+              {endDate.date} {MonthsOfYear[endDate.month + 1]} {endDate.year} at{' '}
+              {endDate.time % 12 < 10
+                ? '0' + (endDate.time % 12)
+                : endDate.time % 12}
+              :{endDate.min < 10 ? '0' + endDate.min : endDate.min}{' '}
+              {endDate.time / 12 < 1 ? 'AM' : 'PM'} at UTC
+            </span>
+          </span>
         </p>
       </div>
     );
@@ -205,7 +254,7 @@ const StakeModal = (props: any) => {
           Cancel
         </button>
         <button
-          className="box-border bg-violet-600 bg-violet-500 active:bg-violet-500 text-white w-[20%] h-[20%] font-bold py-2 px-4 rounded"
+          className="box-border bg-violet-500 active:bg-violet-500 text-white w-[20%] h-[20%] font-bold py-2 px-4 rounded"
           onClick={handleSubmit}
         >
           Submit
