@@ -188,7 +188,9 @@ const StakeModal = (props: any) => {
       <div className="pr-12 pl-16 sm:text-md w-full justify-center">
         <p className="my-2">
           - I am staking{' '}
-          <span className="text-2xl">{stakingAmount.toLocaleString()}</span>{' '}
+          <span className="text-2xl">
+            {Number(stakingAmount).toLocaleString()}
+          </span>{' '}
           $MMT for <span className="text-2xl">{months}</span> Months.
         </p>
         <p className="my-2">
