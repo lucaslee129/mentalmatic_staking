@@ -81,7 +81,7 @@ const StakeModal = (props: any) => {
           - My staking maturity date:{' '}
           <span className="text-2xl">
             <span className="text-2xl">
-              {endDate.date} {MonthsOfYear[endDate.month + 1]} {endDate.year} at{' '}
+              {endDate.date} {MonthsOfYear[endDate.month]} {endDate.year} at{' '}
               {endDate.time % 12 < 10
                 ? '0' + (endDate.time % 12)
                 : endDate.time % 12}
@@ -119,7 +119,7 @@ const StakeModal = (props: any) => {
           - My staking maturity date:{' '}
           <span className="text-2xl">
             <span className="text-2xl">
-              {endDate.date} {MonthsOfYear[endDate.month + 1]} {endDate.year} at{' '}
+              {endDate.date} {MonthsOfYear[endDate.month]} {endDate.year} at{' '}
               {endDate.time % 12 < 10
                 ? '0' + (endDate.time % 12)
                 : endDate.time % 12}
@@ -166,7 +166,7 @@ const StakeModal = (props: any) => {
           - Staking maturity date:{' '}
           <span className="text-2xl">
             <span className="text-2xl">
-              {endDate.date} {MonthsOfYear[endDate.month + 1]} {endDate.year} at{' '}
+              {endDate.date} {MonthsOfYear[endDate.month]} {endDate.year} at{' '}
               {endDate.time % 12 < 10
                 ? '0' + (endDate.time % 12)
                 : endDate.time % 12}

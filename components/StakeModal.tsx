@@ -15,7 +15,7 @@ const StakeModal = (props: any) => {
     time: new Date().getUTCHours(),
     min: new Date().getUTCMinutes(),
   });
-  
+
   const MonthsOfYear = [
     'Jan',
     'Feb',
@@ -203,7 +203,7 @@ const StakeModal = (props: any) => {
         <p>
           - Staking maturity date:{' '}
           <span className="text-2xl">
-            {endDate.date} {MonthsOfYear[endDate.month + 1]} {endDate.year} at{' '}
+            {endDate.date} {MonthsOfYear[endDate.month]} {endDate.year} at{' '}
             {endDate.time % 12 < 10
               ? '0' + (endDate.time % 12)
               : endDate.time % 12}
