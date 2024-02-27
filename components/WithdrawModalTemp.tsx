@@ -7,7 +7,7 @@ import handleCompound from '../utils/handleCompound';
 
 const StakeModal = (props: any) => {
   const [selectedItem, setSelectedItem] = useState(0);
-  const [headerText, setHeaderText] = useState('SELECT WITHDRAWL OPTION');
+  const [headerText, setHeaderText] = useState('Loading...');
   const [stakingAmount, setStakingAmount] = useState(0);
   const [compoundRewardAmount, setCompoundAmount] = useState(0);
   const [stakingPeriod, setStakingPeriod] = useState(0);
@@ -197,6 +197,9 @@ const StakeModal = (props: any) => {
       }}
     >
       <div className="text-5xl w-full justify-center text-center mt-4 mb-2">
+        SELECT WITHDRAWL OPTION
+      </div>
+      <div className="text-3xl w-full justify-center text-center mt-3 mb-2">
         {headerText}
       </div>
       <div className="gap-10 my-4">
