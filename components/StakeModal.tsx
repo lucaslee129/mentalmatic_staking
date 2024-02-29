@@ -114,7 +114,7 @@ const StakeModal = (props: any) => {
       }}
     >
       <div className="text-4xl w-full justify-center text-center mt-8 mb-4">
-        Select Staking Period
+        SELECT STAKING PERIOD
       </div>
       <div className="text-3xl w-full justify-center text-center mb-8">{`${apr}% APR`}</div>
       <div className="box-border flex gap-5 flex-col-2 sm:flex-row justify-between w-full px-6 mb-12 text-white sm:flex-wrap">
