@@ -197,7 +197,7 @@ const StakeModal = (props: any) => {
       }}
     >
       <div className="text-4xl w-full justify-center text-center mt-4 mb-2">
-        SELECT WITHDRAWL OPTION
+        SELECT WITHDRAWAL OPTION
       </div>
       <div className="text-2xl w-full justify-center text-center mt-3 mb-2">
         {headerText}
