@@ -187,7 +187,7 @@ const StakeModal = (props: any) => {
 
   return (
     <Modal
-      className="mx-auto min-w-[500px] max-w-[650px] bg-gradient-to-t from-blue-800/40 to-blue-100/50 bg-blur backdrop-blur-[6px] mt-20 w-1/3 h-3/4 shadow-2xl justify-center rounded-3xl py-8 text-black drop-shadow-[0_5px_5px_rgba(0,0,0,0.35)] md:w-1/2 sm:w-3/4 sm:h-3/4 sx:h-full"
+      className="mx-auto min-w-[500px] max-w-[650px] bg-gradient-to-t from-blue-800/40 to-blue-100/50 bg-blur backdrop-blur-[6px] mt-20 w-1/3 shadow-2xl justify-center rounded-3xl py-8 text-black drop-shadow-[0_5px_5px_rgba(0,0,0,0.35)] md:w-1/2 sm:w-3/4 pb-[60px]"
       isOpen={props.isModalOpen}
       onRequestClose={props.closeModal}
       style={{
@@ -196,10 +196,10 @@ const StakeModal = (props: any) => {
         },
       }}
     >
-      <div className="text-5xl w-full justify-center text-center mt-4 mb-2">
+      <div className="text-4xl w-full justify-center text-center mt-4 mb-2">
         SELECT WITHDRAWL OPTION
       </div>
-      <div className="text-3xl w-full justify-center text-center mt-3 mb-2">
+      <div className="text-2xl w-full justify-center text-center mt-3 mb-2">
         {headerText}
       </div>
       <div className="gap-10 my-4">
